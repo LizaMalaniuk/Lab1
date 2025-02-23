@@ -33,6 +33,18 @@ vector<vector<int>> computeMatrixSequential(
 }
 
 int main() {
+    srand(time(0));
+    int k = 5;
+
+    auto A = generateMatrix(N);
+    auto B = generateMatrix(N);
+
+    auto start = chrono::high_resolution_clock::now();
+    auto C = computeMatrixSequential(A, B, k);
+    auto stop = chrono::high_resolution_clock::now();
+
+    chrono::duration<double> elapsed = stop - start;
+    cout << "Execution time (without parallelization): " << elapsed.count() << " seconds" << endl;
 
     return 0;
 }
